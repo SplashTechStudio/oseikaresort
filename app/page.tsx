@@ -119,13 +119,13 @@ function OsiekaResortContent() {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 mb-16">
-            <div className="relative w-[700px] h-[500px] overflow-hidden">
+            <div className="relative">
               <Image
                 src="/food2.jpg"
-                alt="Restaurant"
-                width={700}
-                height={500}
-                className="rounded-lg shadow-lg object-contain"
+                alt="Resort Interior"
+                width={800}
+                height={600}
+                className="w-[800px] h-[600px] object-cover rounded-lg shadow-xl"
               />
             </div>
             <div>
@@ -309,13 +309,14 @@ function OsiekaResortContent() {
                 Explore Our Drink List
               </Button>
             </div>
-            <div className="relative w-[800px] h-[600px] overflow-hidden">
+
+            <div className="relative">
               <Image
-                src="/drinks2.jpg"
-                alt="Bar & Lounge"
+                src="/drinks.jpg"
+                alt="Resort Interior"
                 width={800}
                 height={600}
-                className="rounded-lg shadow-xl object-contain"
+                className="w-[800px] h-[600px] object-cover rounded-lg shadow-xl"
               />
             </div>
           </div>
