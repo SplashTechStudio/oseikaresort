@@ -13,7 +13,7 @@ interface HeroSliderProps {
 const heroSlides = [
   {
     id: 1,
-    image: "/room2.jpg",
+    image: "/12.jpg",
     title: "Welcome to Osieka Resort",
     subtitle: "Where serene nature meets unmatched hospitality",
     description:
@@ -21,7 +21,7 @@ const heroSlides = [
   },
   {
     id: 2,
-    image: "/food.jpg",
+    image: "/10.jpg",
     title: "Relax in Paradise",
     subtitle: "Surrounded by lush gardens and tranquil waters",
     description:
@@ -29,7 +29,7 @@ const heroSlides = [
   },
   {
     id: 3,
-    image: "/drinks.jpg",
+    image: "/4.jpg",
     title: "Luxury Accommodations",
     subtitle: "Comfort and elegance in every detail",
     description:
@@ -37,7 +37,7 @@ const heroSlides = [
   },
   {
     id: 4,
-    image: "/room3.jpg",
+    image: "/22.jpeg",
     title: "Culinary Excellence",
     subtitle: "Fresh, local ingredients crafted with passion",
     description:
@@ -45,7 +45,7 @@ const heroSlides = [
   },
   {
     id: 5,
-    image: "/room.jpg",
+    image: "/13.jpg",
     title: "Unwind & Celebrate",
     subtitle: "Perfect moments under the African sky",
     description:

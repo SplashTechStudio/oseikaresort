@@ -19,7 +19,7 @@ function OsiekaResortContent() {
 
   const openMenu = () => {
     // Open PDF menu in new tab
-    window.open("/menu.pdf", "_blank")
+    // window.open("/menu.pdf", "_blank")
   }
 
   return (
@@ -95,7 +95,7 @@ function OsiekaResortContent() {
             </div>
             <div className="relative">
               <Image
-                src="/room3.jpg"
+                src="/8.jpg"
                 alt="Resort Interior"
                 width={800}
                 height={600}
@@ -121,7 +121,7 @@ function OsiekaResortContent() {
           <div className="grid lg:grid-cols-2 gap-12 mb-16">
             <div className="relative">
               <Image
-                src="/food2.jpg"
+                src="/22.jpeg"
                 alt="Resort Interior"
                 width={800}
                 height={600}
@@ -185,7 +185,7 @@ function OsiekaResortContent() {
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             <Card className="overflow-hidden">
               <Image
-                src="/room.jpg"
+                src="/14.jpg"
                 alt="Standard Room"
                 width={400}
                 height={300}
@@ -200,7 +200,7 @@ function OsiekaResortContent() {
 
             <Card className="overflow-hidden">
               <Image
-                src="/room2.jpg"
+                src="/13.jpg"
                 alt="Deluxe Suite"
                 width={400}
                 height={300}
@@ -215,7 +215,7 @@ function OsiekaResortContent() {
 
             <Card className="overflow-hidden">
               <Image
-                src="/room3.jpg"
+                src="/10.jpg"
                 alt="Family Lodge"
                 width={400}
                 height={300}
@@ -337,7 +337,7 @@ function OsiekaResortContent() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="relative h-64 overflow-hidden rounded-lg">
               <Image
-                src="/food.jpg"
+                src="/4.jpg"
                 alt="Resort Exterior"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-300"
@@ -345,7 +345,7 @@ function OsiekaResortContent() {
             </div>
             <div className="relative h-64 overflow-hidden rounded-lg">
               <Image
-                src="/food2.jpg"
+                src="/5.jpg"
                 alt="Gourmet Food"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-300"
@@ -353,7 +353,7 @@ function OsiekaResortContent() {
             </div>
             <div className="relative h-64 overflow-hidden rounded-lg">
               <Image
-                src="/drinks.jpg"
+                src="/14.jpg"
                 alt="Room Interior"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-300"
@@ -361,7 +361,7 @@ function OsiekaResortContent() {
             </div>
             <div className="relative h-64 overflow-hidden rounded-lg">
               <Image
-                src="/drinks2.jpg"
+                src="/12.jpg"
                 alt="Outdoor Dining"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-300"
@@ -369,7 +369,7 @@ function OsiekaResortContent() {
             </div>
             <div className="relative h-64 overflow-hidden rounded-lg">
               <Image
-                src="/room.jpg"
+                src="/15.jpg"
                 alt="Bar Area"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-300"
@@ -377,7 +377,7 @@ function OsiekaResortContent() {
             </div>
             <div className="relative h-64 overflow-hidden rounded-lg">
               <Image
-                src="/room2.jpg"
+                src="/10.jpg"
                 alt="Scenic View"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-300"
