@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { MapPin, Phone, Mail, Clock, Wifi, Coffee, Utensils, Star, Quote } from "lucide-react"
+import { MapPin, Phone, Mail, Clock, Wifi, Coffee, Utensils, Star, Quote, Lightbulb } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
@@ -182,19 +182,19 @@ function OsiekaResortContent() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
             <Card className="overflow-hidden">
               <Image
                 src="/14.jpg"
                 alt="Standard Room"
                 width={400}
                 height={300}
-                className="w-full h-48 object-cover"
+                className="w-full h-[75%] object-cover"
               />
               <CardContent className="p-6">
                 <h3 className="text-xl font-bold mb-2">Standard Room</h3>
                 <p className="text-gray-600 mb-4">Ideal for solo travelers</p>
-                <Badge className="bg-emerald-100 text-emerald-800">From ₦25,000/night</Badge>
+                <Badge className="bg-emerald-100 text-emerald-800">From ₦5,000/night</Badge>
               </CardContent>
             </Card>
 
@@ -204,27 +204,12 @@ function OsiekaResortContent() {
                 alt="Deluxe Suite"
                 width={400}
                 height={300}
-                className="w-full h-48 object-cover"
+                className="w-full h-[75%] object-cover"
               />
               <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-2">Deluxe Suite</h3>
+                <h3 className="text-xl font-bold mb-2">VIP Suite</h3>
                 <p className="text-gray-600 mb-4">For couples and short stays</p>
-                <Badge className="bg-emerald-100 text-emerald-800">From ₦45,000/night</Badge>
-              </CardContent>
-            </Card>
-
-            <Card className="overflow-hidden">
-              <Image
-                src="/10.jpg"
-                alt="Family Lodge"
-                width={400}
-                height={300}
-                className="w-full h-48 object-cover"
-              />
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-2">Family Lodge</h3>
-                <p className="text-gray-600 mb-4">Spacious enough for groups</p>
-                <Badge className="bg-emerald-100 text-emerald-800">From ₦65,000/night</Badge>
+                <Badge className="bg-emerald-100 text-emerald-800">From ₦7,000/night</Badge>
               </CardContent>
             </Card>
           </div>
@@ -233,8 +218,8 @@ function OsiekaResortContent() {
             <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">All Rooms Include:</h3>
             <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
               <div className="text-center">
-                <Wifi className="w-8 h-8 text-emerald-600 mx-auto mb-2" />
-                <span className="text-gray-700">Free Wi-Fi</span>
+                <Lightbulb className="w-8 h-8 text-emerald-600 mx-auto mb-2" />
+                <span className="text-gray-700">Constant Electricity</span>
               </div>
               <div className="text-center">
                 <div className="w-8 h-8 bg-emerald-600 rounded-full mx-auto mb-2 flex items-center justify-center">

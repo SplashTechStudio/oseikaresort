@@ -48,10 +48,9 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
   })
 
   const roomPrices = {
-    standard: 25000,
-    deluxe: 45000,
-    family: 65000,
-    entire_resort: 200000, // Special price for entire resort
+    standard: 5000,
+    vip: 7000,
+    entire_resort: 200000,
   }
 
   // Load Paystack script
@@ -88,12 +87,10 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
     const nights = Math.ceil((checkOut.getTime() - checkIn.getTime()) / (1000 * 60 * 60 * 24))
     const roomPrice = roomPrices[bookingData.roomType as keyof typeof roomPrices] || 0
 
-    // For entire resort, price is per night regardless of number of rooms
     if (bookingData.roomType === "entire_resort") {
       return nights * roomPrice
     }
 
-    // For individual rooms, multiply by number of rooms
     const numberOfRooms = Number.parseInt(bookingData.numberOfRooms) || 1
     return nights * roomPrice * numberOfRooms
   }
@@ -129,6 +126,58 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
     },
   })
 
+  const sendWhatsAppMessage = () => {
+    const message = `
+Booking Confirmation:
+Name: ${bookingData.firstName} ${bookingData.lastName}
+Email: ${bookingData.email}
+Phone: ${bookingData.phone}
+Check-in: ${bookingData.checkIn}
+Check-out: ${bookingData.checkOut}
+Accommodation: ${getRoomTypeDisplay(bookingData.roomType)}
+${bookingData.roomType !== "entire_resort" ? `Number of Rooms: ${bookingData.numberOfRooms}` : ''}
+Guests: ${bookingData.guests}
+${bookingData.specialRequests ? `Special Requests: ${bookingData.specialRequests}` : ''}
+Total Amount: ₦${calculateTotal().toLocaleString()}
+---
+Please confirm your reservation manually.
+    `.trim()
+
+    const encodedMessage = encodeURIComponent(message)
+    const whatsappNumber = "08074538555" // Replace with your business WhatsApp number
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`
+
+    window.open(whatsappUrl, "_blank")
+
+    // Send email as well
+    sendReservationEmail.mutate({
+      ...bookingData,
+      totalAmount: calculateTotal(),
+    })
+
+    // Reset and close
+    onClose()
+    setStep(1)
+    setBookingData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      checkIn: "",
+      checkOut: "",
+      roomType: "",
+      numberOfRooms: "1",
+      guests: "1",
+      specialRequests: "",
+      totalAmount: 0,
+    })
+
+    toast({
+      title: "Reservation Sent",
+      description: "Your booking details have been sent via WhatsApp for manual confirmation.",
+    })
+  }
+
   const initializePayment = () => {
     if (!paystackLoaded || !(window as any).PaystackPop) {
       toast({
@@ -151,11 +200,10 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
     }
 
     try {
-      // Initialize Paystack payment
       const handler = (window as any).PaystackPop.setup({
         key: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY || "pk_test_your_public_key_here",
         email: bookingData.email,
-        amount: total * 100, // Paystack expects amount in kobo
+        amount: total * 100,
         currency: "NGN",
         ref: `booking_${Date.now()}`,
         metadata: {
@@ -168,19 +216,16 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
           ],
         },
         callback: (response: any) => {
-          // Payment successful
           toast({
             title: "Payment Successful!",
             description: `Payment completed. Reference: ${response.reference}`,
           })
 
-          // Send reservation email
           sendReservationEmail.mutate({
             ...bookingData,
             totalAmount: total,
           })
 
-          // Close modal and reset
           onClose()
           setStep(1)
           setBookingData({
@@ -219,7 +264,6 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
 
   const handleNext = () => {
     if (step === 1) {
-      // Validate step 1
       if (!bookingData.firstName || !bookingData.lastName || !bookingData.email || !bookingData.phone) {
         toast({
           title: "Missing Information",
@@ -228,8 +272,8 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
         })
         return
       }
+      setStep(2)
     } else if (step === 2) {
-      // Validate step 2
       if (!bookingData.checkIn || !bookingData.checkOut || !bookingData.roomType) {
         toast({
           title: "Missing Information",
@@ -239,7 +283,6 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
         return
       }
 
-      // Validate dates
       const checkIn = new Date(bookingData.checkIn)
       const checkOut = new Date(bookingData.checkOut)
       const today = new Date()
@@ -262,9 +305,8 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
         })
         return
       }
+      setStep(3)
     }
-
-    setStep(step + 1)
   }
 
   const handleBack = () => {
@@ -275,10 +317,8 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
     switch (roomType) {
       case "standard":
         return "Standard Room"
-      case "deluxe":
+      case "vip":
         return "Deluxe Suite"
-      case "family":
-        return "Family Lodge"
       case "entire_resort":
         return "Entire Resort"
       default:
@@ -412,9 +452,8 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
                   <SelectValue placeholder="Select room type" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="standard">Standard Room - ₦25,000/night</SelectItem>
-                  <SelectItem value="deluxe">Deluxe Suite - ₦45,000/night</SelectItem>
-                  <SelectItem value="family">Family Lodge - ₦65,000/night</SelectItem>
+                  <SelectItem value="standard">Standard Room - ₦5,000/night</SelectItem>
+                  <SelectItem value="vip">Deluxe Suite - ₦7,000/night</SelectItem>
                   <SelectItem value="entire_resort">Entire Resort - ₦200,000/night</SelectItem>
                 </SelectContent>
               </Select>
@@ -558,14 +597,23 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
               <Button variant="outline" onClick={handleBack}>
                 Back
               </Button>
-              <Button
-                onClick={initializePayment}
-                className="bg-emerald-600 hover:bg-emerald-700"
-                disabled={sendReservationEmail.isPending || !paystackLoaded}
-              >
-                <CreditCard className="w-4 h-4 mr-2" />
-                {!paystackLoaded ? "Loading Payment..." : "Pay Now"}
-              </Button>
+              <div className="flex gap-2">
+                <Button
+                  onClick={sendWhatsAppMessage}
+                  className="bg-emerald-600 hover:bg-emerald-700"
+                  disabled={sendReservationEmail.isPending}
+                >
+                  Confirm via WhatsApp
+                </Button>
+                {/* <Button
+                  onClick={initializePayment}
+                  className="bg-emerald-600 hover:bg-emerald-700"
+                  disabled={sendReservationEmail.isPending || !paystackLoaded}
+                >
+                  <CreditCard className="w-4 h-4 mr-2" />
+                  {!paystackLoaded ? "Loading Payment..." : "Pay Now"}
+                </Button> */}
+              </div>
             </div>
           </div>
         )}

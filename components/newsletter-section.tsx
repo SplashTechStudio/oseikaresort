@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -30,9 +29,24 @@ export function NewsletterSection() {
       return response.json()
     },
     onSuccess: () => {
+      // Send WhatsApp message
+      const message = `
+Newsletter Subscription:
+Name: ${name}
+Email: ${email}
+---
+Please confirm your subscription.
+      `.trim()
+
+      const encodedMessage = encodeURIComponent(message)
+      const whatsappNumber = "YOUR_WHATSAPP_NUMBER" // Replace with your business WhatsApp number
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`
+
+      window.open(whatsappUrl, "_blank")
+
       toast({
         title: "Successfully Subscribed!",
-        description: "Thank you for subscribing to our newsletter.",
+        description: "Thank you for subscribing to our newsletter. Please confirm via WhatsApp.",
       })
       setEmail("")
       setName("")
