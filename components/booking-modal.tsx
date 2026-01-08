@@ -452,9 +452,8 @@ Please confirm your reservation manually.
                   <SelectValue placeholder="Select room type" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="standard">Standard Room - ₦5,000/night</SelectItem>
-                  <SelectItem value="vip">Deluxe Suite - ₦7,000/night</SelectItem>
-                  <SelectItem value="entire_resort">Entire Resort - ₦200,000/night</SelectItem>
+                  <SelectItem value="standard">Standard Room - ₦10,000/night</SelectItem>
+                  <SelectItem value="vip">Deluxe Suite - ₦15,000/night</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -477,7 +476,10 @@ Please confirm your reservation manually.
                       <SelectItem value="3">3 Rooms</SelectItem>
                       <SelectItem value="4">4 Rooms</SelectItem>
                       <SelectItem value="5">5 Rooms</SelectItem>
-                      <SelectItem value="6">6+ Rooms</SelectItem>
+                      <SelectItem value="6">6 Rooms</SelectItem>
+                      <SelectItem value="7">7 Rooms</SelectItem>
+                      <SelectItem value="8">8 Rooms</SelectItem>
+                      <SelectItem value="9">9 Rooms</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
