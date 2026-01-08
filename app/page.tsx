@@ -141,10 +141,6 @@ function OsiekaResortContent() {
                 </li>
                 <li className="flex items-center space-x-3">
                   <Utensils className="w-5 h-5 text-emerald-600" />
-                  <span>Vegetarian & vegan options available</span>
-                </li>
-                <li className="flex items-center space-x-3">
-                  <Utensils className="w-5 h-5 text-emerald-600" />
                   <span>Outdoor and indoor dining settings</span>
                 </li>
               </ul>
