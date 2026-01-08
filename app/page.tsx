@@ -194,7 +194,7 @@ function OsiekaResortContent() {
               <CardContent className="p-6">
                 <h3 className="text-xl font-bold mb-2">Standard Room</h3>
                 <p className="text-gray-600 mb-4">Ideal for solo travelers</p>
-                <Badge className="bg-emerald-100 text-emerald-800">From ₦5,000/night</Badge>
+                <Badge className="bg-emerald-100 text-emerald-800">From ₦10,000/night</Badge>
               </CardContent>
             </Card>
 
@@ -209,7 +209,7 @@ function OsiekaResortContent() {
               <CardContent className="p-6">
                 <h3 className="text-xl font-bold mb-2">VIP Suite</h3>
                 <p className="text-gray-600 mb-4">For couples and short stays</p>
-                <Badge className="bg-emerald-100 text-emerald-800">From ₦7,000/night</Badge>
+                <Badge className="bg-emerald-100 text-emerald-800">From ₦15,000/night</Badge>
               </CardContent>
             </Card>
           </div>
