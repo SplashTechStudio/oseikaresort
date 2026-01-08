@@ -144,7 +144,7 @@ Please confirm your reservation manually.
     `.trim()
 
     const encodedMessage = encodeURIComponent(message)
-    const whatsappNumber = "08074538555" // Replace with your business WhatsApp number
+    const whatsappNumber = "+2348074538555"
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`
 
     window.open(whatsappUrl, "_blank")
