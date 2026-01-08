@@ -48,9 +48,8 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
   })
 
   const roomPrices = {
-    standard: 5000,
-    vip: 7000,
-    entire_resort: 200000,
+    standard: 10000,
+    vip: 15000,
   }
 
   // Load Paystack script
